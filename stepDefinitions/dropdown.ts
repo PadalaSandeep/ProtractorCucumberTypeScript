@@ -28,7 +28,7 @@ Then(/^I should see all operators in dropdown$/, async function(){
       console.log('Inside for loop');
       await expect(homePage.dropdown.get(i).getText()).to.eventually.equal(dropdownActual[i]);
       await homePage.dropdown.get(i).click();
-      console.log(i);
+      console.log("value" + i);
     }
     await homePage.dropdownclick.click();
   });
