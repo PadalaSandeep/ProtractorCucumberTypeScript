@@ -6,7 +6,8 @@ const expect = chai.expect;
 const homePage: HomePageObject = new HomePageObject();
 
 // tslint:disable-next-line: only-arrow-functions
-Given(/^I am on calculator home page$/, async function() {
+Given(/^I am on calculator home page$/, {timeout: 2 * 5000}, async function() {
+     await  browser.sleep(6000);
      await expect(homePage.HomePageHeading.getText()).to.eventually.equal("Super Calculator");
    });
 

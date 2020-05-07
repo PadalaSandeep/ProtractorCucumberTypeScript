@@ -13,7 +13,7 @@ import testdataJson from "../testData/testdata";
 const homePage: HomePageObject = new HomePageObject();
 
 Given(/^I am on dropdown page$/, async function() {
-    await expect(homePage.HomePageHeading.getText()).to.eventually.equal("Super Calculato");
+    await expect(homePage.HomePageHeading.getText()).to.eventually.equal("Super Calculator");
     const screenShot = await browser.takeScreenshot();
     this.attach(screenShot, "image/png");
   });
