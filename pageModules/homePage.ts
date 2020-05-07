@@ -22,5 +22,4 @@ export class HomePageObject {
         this.dropdownclick = element(by.model("operator"));
         this.loginidElement = element(by.xpath(testdataJson.testcase1.valueDataXPATH));
     }
- 
 }

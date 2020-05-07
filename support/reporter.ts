@@ -21,7 +21,7 @@ const cucumberReporterOptions = {
         "Browser": "Chrome",
         // tslint:disable-next-line:trailing-comma
         "Platform": "Windows 10"
-    }
+    },
 };
 
 export class Reporter {
