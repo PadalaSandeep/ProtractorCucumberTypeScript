@@ -5,8 +5,13 @@ import { Reporter } from "../support/reporter";
 const jsonReports = process.cwd() + "/reports/json";
 const reportZip = process.cwd() + "/reports/";
 const ScreenshotsPath = process.cwd() + "/reports/Screenshots/";
-const zipper = require('zip-local');
-const empty = require('empty-folder');
+const zipper = require("zip-local");
+const empty = require("empty-folder");
+
+const date = new Date().toDateString();
+const hours = new Date().getHours().toString();
+const mint = new Date().getMinutes().toString();
+const secs = new Date().getSeconds().toString();
 
 export const config: Config = {
     directConnect: true,
@@ -18,7 +23,7 @@ export const config: Config = {
     baseUrl: "https://juliemr.github.io/protractor-demo/",
 
     capabilities: {
-        browserName: "chrome"
+        browserName: "chrome",
         //shardTestFiles: true,
         //maxInstances: 2
     },
@@ -43,7 +48,7 @@ export const config: Config = {
         format: "json:./reports/json/cucumber_report.json",
         require: ["../../executionScripts/stepDefinitions/*.js", "../../executionScripts/support/*.js"],
         priorities: {
-            '1': ['@Feature1'],
+            "1": ['@Feature1'],
             '2': ['@Feature2']
         },
         strict: true,
@@ -52,6 +57,7 @@ export const config: Config = {
 
     onComplete: () => {
         Reporter.createHTMLReport();
-        zipper.sync.zip(reportZip).compress().save("pack.zip");
+        zipper.sync.zip(reportZip).compress()
+        .save("CDBReport_" + date.replace(" " , "_") + "_" + hours + "_" + mint + "_" + secs + ".zip");
     },
 };
