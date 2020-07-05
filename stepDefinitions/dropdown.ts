@@ -1,4 +1,5 @@
 import { HomePageObject } from "../pageModules/homePage";
+import { ExcelCon } from "../testData/excelCon";
 
 const { Then, Given, When, And } = require("cucumber");
 const {browser} = require("protractor");
@@ -13,17 +14,21 @@ import testdataJson from "../testData/testdata";
 const homePage: HomePageObject = new HomePageObject();
 
 Given(/^I am on dropdown page$/, async function() {
-    await expect(homePage.HomePageHeading.getText()).to.eventually.equal("Super Calculato");
+    await expect(homePage.HomePageHeading.getText()).to.eventually.equal("Super Calculator");
     const screenShot = await browser.takeScreenshot();
     this.attach(screenShot, "image/png");
   });
 
 // tslint:disable-next-line: only-arrow-functions
 Then(/^I should see all operators in dropdown$/, async function() {
-    const dropdownActual = new Array("+", "/", "%", "*", "-");
-    for (let i = 0; i < (await homePage.dropdown).length; i++) {
-      await expect(homePage.dropdown.get(i).getText()).to.eventually.equal(dropdownActual[i]);
+    const excelCon: ExcelCon = new ExcelCon("Column 3");
+
+    await browser.sleep(1000);
+
+    for (let i = 0; i < (await excelCon.sDataArray).length; i++) {
+      await expect(homePage.dropdown.get(i).getText()).to.eventually.equal(excelCon.sDataArray[i]);
       await homePage.dropdown.get(i).click();
     }
+
     await homePage.dropdownclick.click();
   });

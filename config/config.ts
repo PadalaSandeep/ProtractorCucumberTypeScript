@@ -13,10 +13,12 @@ const hours = new Date().getHours().toString();
 const mint = new Date().getMinutes().toString();
 const secs = new Date().getSeconds().toString();
 
+// const specFilter = require('../support/specs.filter');
+
 export const config: Config = {
     directConnect: true,
 
-    //seleniumAddress: "http://127.0.0.1:4444/wd/hub",
+    // seleniumAddress: "http://127.0.0.1:4444/wd/hub",
 
     SELENIUM_PROMISE_MANAGER: false,
 
@@ -24,8 +26,8 @@ export const config: Config = {
 
     capabilities: {
         browserName: "chrome",
-        //shardTestFiles: true,
-        //maxInstances: 2
+        // shardTestFiles: true,
+        // maxInstances: 2
     },
 
     framework: "custom",
@@ -48,11 +50,11 @@ export const config: Config = {
         format: "json:./reports/json/cucumber_report.json",
         require: ["../../executionScripts/stepDefinitions/*.js", "../../executionScripts/support/*.js"],
         priorities: {
-            "1": ['@Feature1'],
-            '2': ['@Feature2']
+            // "1": ["@dropdown"],
+            // '2': ['@Add']
         },
         strict: true,
-        tags: "",
+        tags: ["@dropdown"]
     },
 
     onComplete: () => {
@@ -61,3 +63,5 @@ export const config: Config = {
         .save("CDBReport_" + date.replace(" " , "_") + "_" + hours + "_" + mint + "_" + secs + ".zip");
     },
 };
+
+// exports.config = specFilter(config);
