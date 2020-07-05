@@ -17,7 +17,7 @@ This project is an example of what a Typescript Protractor project could look li
 -   Install [Node](http://nodejs.org) (v6.x.x or later)
 -   Follow setup steps described [here](http://www.protractortest.org/#/tutorial#setup)
 -   `npm install` to install the project dependencies.
--   In a separate command line window, run `webdriver-manager start` and keep it running.
+-   In a separate command line window, run `npm run webdriver-check` and keep it running.
 
 ## Run tests:
 
